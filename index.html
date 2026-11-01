@@ -1,274 +1,297 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yuexin Feng</title>
-  <meta name="description" content="Personal homepage of Yuexin Feng — system-security-oriented large AI model training, AI security, and agent security.">
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #1f2430;
-      --muted: #6b7280;
-      --accent: #2563eb;
-      --accent-light: #eff6ff;
-      --border: #e5e7eb;
-      --card: #f9fafb;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-    }
-    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuexin Feng</title>
+<meta name="description" content="Yuexin Feng — Senior Engineer at Northern Information Control Research Institute Group Co., Ltd. Research on system-security-oriented large AI model training, AI security, and agent security.">
+<style>
+  :root{
+    --bg:#fbfcfe;
+    --surface:#ffffff;
+    --text:#111827;
+    --text-soft:#4b5563;
+    --muted:#6b7280;
+    --line:#e6e9f0;
+    --accent:#4f46e5;
+    --accent-2:#0ea5e9;
+    --accent-soft:#eef2ff;
+    --shadow:0 1px 2px rgba(16,24,40,.04), 0 8px 24px -12px rgba(16,24,40,.12);
+    --shadow-lg:0 24px 60px -30px rgba(31,41,55,.35);
+    --radius:18px;
+  }
+  [data-theme="dark"]{
+    --bg:#0b1020;
+    --surface:#131c33;
+    --text:#eef2ff;
+    --text-soft:#c7d0e4;
+    --muted:#93a0bd;
+    --line:#23304d;
+    --accent:#8b95ff;
+    --accent-2:#4cc4f5;
+    --accent-soft:#1b2647;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -18px rgba(0,0,0,.7);
+    --shadow-lg:0 30px 70px -40px rgba(0,0,0,.9);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    transition:background .35s ease,color .35s ease;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:960px;margin:0 auto;padding:0 26px}
 
-    /* Nav */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-    }
-    nav .container { display: flex; align-items: center; justify-content: space-between; height: 56px; }
-    nav .brand { font-weight: 700; text-decoration: none; color: var(--text); }
-    nav .links a {
-      color: var(--muted); text-decoration: none; margin-left: 20px; font-size: 15px;
-    }
-    nav .links a:hover { color: var(--accent); }
+  /* ============ NAV ============ */
+  nav{position:sticky;top:0;z-index:60;backdrop-filter:saturate(180%) blur(14px);
+      background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--line)}
+  nav .wrap{height:62px;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-weight:700;letter-spacing:-.01em;font-size:.98rem;display:flex;align-items:center;gap:9px}
+  .dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+       box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 16%,transparent)}
+  .navlinks{display:flex;align-items:center;gap:26px}
+  .navlinks a{font-size:.9rem;color:var(--text-soft);position:relative;padding:4px 0}
+  .navlinks a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;border-radius:2px;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .25s ease}
+  .navlinks a:hover{color:var(--text)}
+  .navlinks a:hover::after{width:100%}
+  .theme-btn{border:1px solid var(--line);background:var(--surface);color:var(--text);
+    width:36px;height:36px;border-radius:11px;cursor:pointer;font-size:15px;line-height:1;
+    display:inline-flex;align-items:center;justify-content:center;transition:.2s;box-shadow:var(--shadow)}
+  .theme-btn:hover{transform:translateY(-1px);border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
 
-    /* Hero */
-    .hero { display: flex; gap: 40px; padding: 56px 0 40px; align-items: flex-start; flex-wrap: wrap; }
-    .hero-text { flex: 1 1 480px; }
-    .info-card {
-      flex: 0 0 280px; background: var(--card);
-      border: 1px solid var(--border); border-radius: 16px; padding: 22px 24px;
-    }
-    .info-card h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 14px; }
-    .info-row { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--border); font-size: 0.9rem; align-items: baseline; }
-    .info-row:last-child { border-bottom: none; }
-    .info-row .k { flex: 0 0 92px; color: var(--muted); }
-    .info-row .v { color: var(--text); font-weight: 500; }
-    .info-row .v a { color: var(--accent); text-decoration: none; }
-    .info-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-    .info-chips span { padding: 2px 10px; border-radius: 999px; font-size: 0.78rem; background: var(--accent-light); color: var(--accent); border: 1px solid #dbeafe; }
-    .hero h1 { font-size: 2.2rem; margin-bottom: 4px; }
-    .hero .pronouns { color: var(--muted); font-size: 1rem; }
-    .hero p.affiliation { margin-top: 14px; font-size: 1.05rem; }
-    .hero p.bio { margin-top: 14px; color: var(--text); max-width: 60ch; }
-    .hero .social { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; }
-    .badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 5px 12px; border-radius: 999px; font-size: 14px;
-      background: var(--accent-light); color: var(--accent); text-decoration: none;
-      border: 1px solid #dbeafe;
-    }
-    .badge:hover { background: #dbeafe; }
-    .hero-photo { flex: 0 0 220px; }
-    .hero-photo img {
-      width: 220px; height: 220px; object-fit: cover;
-      border-radius: 16px; border: 1px solid var(--border); background: var(--card);
-    }
+  /* ============ HERO ============ */
+  header{position:relative;overflow:hidden;padding:78px 0 62px;border-bottom:1px solid var(--line)}
+  header::before{content:"";position:absolute;inset:-40% -20% auto -20%;height:520px;
+    background:
+      radial-gradient(45% 55% at 22% 32%,color-mix(in srgb,var(--accent) 26%,transparent),transparent 70%),
+      radial-gradient(40% 50% at 78% 18%,color-mix(in srgb,var(--accent-2) 24%,transparent),transparent 72%);
+    filter:blur(28px);opacity:.75;pointer-events:none}
+  header .wrap{position:relative}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent);font-weight:700;
+    background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 22%,transparent);
+    padding:5px 12px;border-radius:999px}
+  h1{font-size:clamp(2.3rem,5.2vw,3.5rem);line-height:1.1;letter-spacing:-.03em;font-weight:800;margin:20px 0 0}
+  h1 .grad{background:linear-gradient(100deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1 .cn{display:block;font-size:.30em;font-weight:600;color:var(--muted);letter-spacing:.22em;margin-top:12px}
+  .role{margin-top:18px;font-size:1.02rem;color:var(--text-soft)}
+  .role strong{color:var(--text);font-weight:650}
+  .lede{margin-top:18px;max-width:62ch;font-size:1.04rem;color:var(--text-soft)}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:12px;font-size:.92rem;font-weight:600;
+    border:1px solid var(--line);background:var(--surface);color:var(--text);box-shadow:var(--shadow);transition:.22s}
+  .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+  .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));border-color:transparent;color:#fff}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+  .chip{font-size:.84rem;padding:6px 14px;border-radius:999px;color:var(--text-soft);
+    background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+  .chip b{color:var(--accent);font-weight:700;margin-right:6px;font-variant-numeric:tabular-nums}
 
-    /* Sections */
-    section { padding: 36px 0; border-top: 1px solid var(--border); }
-    section h2 { font-size: 1.4rem; margin-bottom: 20px; }
-    section h2 .anchor { color: var(--accent); text-decoration: none; }
+  /* ============ SECTIONS ============ */
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:none}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:28px}
+  .sec-num{font-size:.78rem;font-weight:800;letter-spacing:.16em;color:var(--accent);opacity:.85}
+  h2{font-size:1.45rem;letter-spacing:-.02em;font-weight:750}
+  .sec-sub{color:var(--muted);font-size:.92rem;margin:-16px 0 24px 40px}
 
-    /* News */
-    .news li { margin: 8px 0 8px 1.2em; }
-    .news .date { color: var(--muted); font-variant-numeric: tabular-nums; }
+  /* research cards */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px 22px;box-shadow:var(--shadow);transition:.25s;position:relative;overflow:hidden}
+  .card::after{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:3px;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));opacity:0;transition:.25s}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:color-mix(in srgb,var(--accent) 30%,var(--line))}
+  .card:hover::after{opacity:1}
+  .card .ico{font-size:1.35rem;line-height:1}
+  .card h3{font-size:1rem;margin:14px 0 8px;letter-spacing:-.01em}
+  .card p{font-size:.92rem;color:var(--text-soft)}
 
-    /* Research interests */
-    .interests { display: flex; flex-wrap: wrap; gap: 10px; }
-    .chip {
-      padding: 6px 14px; border-radius: 999px; font-size: 14px;
-      background: var(--card); border: 1px solid var(--border);
-    }
+  /* publication */
+  .pub{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 26px;box-shadow:var(--shadow);position:relative}
+  .pub::before{content:"";position:absolute;left:0;top:22px;bottom:22px;width:3px;border-radius:3px;
+    background:linear-gradient(180deg,var(--accent),var(--accent-2))}
+  .pub .venue{font-size:.78rem;font-weight:800;letter-spacing:.06em;color:var(--accent)}
+  .pub h3{font-size:1.12rem;margin:10px 0 4px;letter-spacing:-.01em;font-weight:700}
+  .pub h3 small{display:block;font-size:.88rem;font-weight:500;color:var(--muted);font-style:italic;margin-top:4px}
+  .pub .meta{margin-top:12px;font-size:.92rem;color:var(--text-soft)}
+  .pub .meta .me{color:var(--text);font-weight:700;border-bottom:2px solid color-mix(in srgb,var(--accent) 45%,transparent)}
+  .pub .links{display:flex;gap:16px;margin-top:16px;font-size:.88rem}
+  .pub .links a{color:var(--accent);font-weight:600;display:inline-flex;align-items:center;gap:5px}
+  .pub .links a:hover{text-decoration:underline;text-underline-offset:3px}
 
-    /* Publications */
-    .pub { display: flex; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-    .pub:last-child { border-bottom: none; }
-    .pub-body { flex: 1; }
-    .pub-title { font-weight: 600; font-size: 1.02rem; }
-    .pub-title-en { color: var(--muted); font-size: 0.9rem; font-style: italic; margin-top: 2px; }
-    .pub-venue { color: var(--accent); font-weight: 600; font-size: 0.92rem; margin-top: 4px; }
-    .pub-authors { color: var(--muted); font-size: 0.92rem; margin-top: 2px; }
-    .pub-authors .me { color: var(--text); font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
-    .pub-links { margin-top: 8px; display: flex; gap: 14px; flex-wrap: wrap; }
-    .pub-links a { font-size: 0.88rem; color: var(--accent); text-decoration: none; }
-    .pub-links a:hover { text-decoration: underline; }
+  /* news timeline */
+  .tl{list-style:none;position:relative;padding-left:26px}
+  .tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;border-radius:2px;
+    background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 55%,transparent),transparent)}
+  .tl li{position:relative;padding:0 0 22px 4px}
+  .tl li:last-child{padding-bottom:0}
+  .tl li::before{content:"";position:absolute;left:-25px;top:8px;width:10px;height:10px;border-radius:50%;
+    background:var(--surface);border:2px solid var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 12%,transparent)}
+  .tl .date{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:2px}
+  .tl p{font-size:.96rem;color:var(--text-soft)}
 
-    /* Services */
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-    .service-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
-    .service-card h3 { font-size: 0.95rem; margin-bottom: 8px; }
-    .service-card p, .service-card li { font-size: 0.9rem; color: var(--muted); }
-    .service-card ul { margin-left: 1.2em; }
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .contact-item{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;
+    box-shadow:var(--shadow);transition:.22s}
+  .contact-item:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+  .contact-item .k{font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .contact-item .v{margin-top:6px;font-size:.98rem;font-weight:600;word-break:break-all}
+  .contact-item .v a{color:var(--accent)}
 
-    /* Contact */
-    .contact p { margin: 6px 0; }
-    .contact a { color: var(--accent); text-decoration: none; }
-    .contact a:hover { text-decoration: underline; }
+  footer{padding:34px 0 54px;color:var(--muted);font-size:.86rem;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 
-    footer { border-top: 1px solid var(--border); padding: 24px 0 48px; color: var(--muted); font-size: 0.85rem; }
-
-    @media (max-width: 640px) {
-      .hero { padding-top: 32px; }
-      .info-card { order: -1; flex: 1 1 100%; }
-    }
-  </style>
+  @media (max-width:680px){
+    .navlinks{gap:16px}
+    .navlinks a{font-size:.84rem}
+    header{padding:54px 0 46px}
+    section{padding:48px 0}
+    .sec-sub{margin-left:0}
+  }
+</style>
 </head>
 <body>
 
 <nav>
-  <div class="container">
-    <a class="brand" href="#top">Yuexin Feng</a>
-    <div class="links">
-      <a href="#news">News</a>
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="dot"></span>Yuexin Feng</a>
+    <div class="navlinks">
+      <a href="#research">Research</a>
       <a href="#publications">Publications</a>
-      <a href="#services">Services</a>
+      <a href="#news">News</a>
       <a href="#contact">Contact</a>
-      <a href="assets/cv.pdf">CV</a>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
     </div>
   </div>
 </nav>
 
-<main class="container" id="top">
-
-  <!-- ===== Hero ===== -->
-  <div class="hero">
-    <div class="hero-text">
-      <h1>Yuexin Feng</h1>
-      <p class="affiliation">
-        <strong>Senior Engineer</strong> &middot; Northern Information Control Research Institute Group Co., Ltd.
-      </p>
-      <p class="bio">
-        My research focuses on system-security-oriented training of large AI models,
-        AI security, and the security of LLM-based intelligent agents — building
-        large model systems that remain reliable and robust in real-world deployments.
-      </p>
-      <p class="bio">
-        <strong>Email:</strong> <a href="mailto:caierayu@163.com">caierayu@163.com</a>
-      </p>
-      <div class="social">
-        <a class="badge" href="https://scholar.google.com/" target="_blank" rel="noopener">🎓 Google Scholar</a>
-        <a class="badge" href="https://github.com/caierayu" target="_blank" rel="noopener">🐙 GitHub</a>
-        <a class="badge" href="https://www.linkedin.com/" target="_blank" rel="noopener">💼 LinkedIn</a>
-        <a class="badge" href="https://twitter.com/" target="_blank" rel="noopener">𝕏 Twitter</a>
-        <a class="badge" href="https://orcid.org/" target="_blank" rel="noopener">🆔 ORCID</a>
-      </div>
+<header id="top">
+  <div class="wrap">
+    <span class="eyebrow">Senior Engineer</span>
+    <h1>Yuexin <span class="grad">Feng</span><span class="cn">冯 越 鑫</span></h1>
+    <p class="role">
+      <strong>Northern Information Control Research Institute Group Co., Ltd.</strong>
+    </p>
+    <p class="lede">
+      My research focuses on system-security-oriented training of large AI models,
+      AI security, and the security of LLM-based intelligent agents — building large
+      model systems that stay reliable and robust in real-world deployments.
+    </p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:caierayu@163.com">✉ Get in touch</a>
+      <a class="btn" href="https://github.com/caierayu" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
-    <div class="info-card">
-      <h3>Profile</h3>
-      <div class="info-row"><span class="k">Position</span><span class="v">Senior Engineer</span></div>
-      <div class="info-row"><span class="k">Affiliation</span><span class="v">Northern Information Control Research Institute Group Co., Ltd.</span></div>
-      <div class="info-row"><span class="k">Location</span><span class="v">Nanjing, China</span></div>
-      <div class="info-row">
-        <span class="k">Focus</span>
-        <span class="v info-chips">
-          <span>LLM Training Security</span>
-          <span>AI Security</span>
-          <span>Agent Security</span>
-        </span>
-      </div>
-      <div class="info-row"><span class="k">Email</span><span class="v"><a href="mailto:caierayu@163.com">caierayu@163.com</a></span></div>
-      <div class="info-row"><span class="k">Open to</span><span class="v">Collaborations &amp; discussions</span></div>
+    <div class="chips">
+      <span class="chip"><b>01</b>LLM Training Security</span>
+      <span class="chip"><b>02</b>AI Security</span>
+      <span class="chip"><b>03</b>Agent Security</span>
     </div>
   </div>
+</header>
 
-  <!-- ===== News ===== -->
+<main class="wrap">
+
+  <!-- ============ RESEARCH ============ -->
+  <section id="research">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Research</h2></div>
+    <p class="sec-sub">Security as a first-class property of large model systems.</p>
+    <div class="grid">
+      <article class="card">
+        <div class="ico">🛡️</div>
+        <h3>System-Security-Oriented Training</h3>
+        <p>Treating security as a training objective across the whole pipeline — from data
+           hygiene and alignment to evaluation of deployed models.</p>
+      </article>
+      <article class="card">
+        <div class="ico">🔐</div>
+        <h3>AI Security</h3>
+        <p>Robustness of large models against adversarial inputs, unsafe behaviour, and
+           misuse in operational environments.</p>
+      </article>
+      <article class="card">
+        <div class="ico">🤖</div>
+        <h3>LLM Agent Security</h3>
+        <p>Safety of tool-using, autonomous agents: permission boundaries, prompt-injection
+           resistance, and trustworthy action execution.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ PUBLICATIONS ============ -->
+  <section id="publications">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Publications</h2></div>
+    <div class="pub">
+      <div class="venue">《电子技术与软件工程》 · 2019(18): 31–32</div>
+      <h3>软件测试策略和测试方法的应用
+        <small>Application of Software Testing Strategies and Methods</small>
+      </h3>
+      <p class="meta"><span class="me">Yuexin Feng</span> (冯越鑫)</p>
+      <div class="links">
+        <a href="https://www.fabiao.com.cn/dzjsyrjgc/" target="_blank" rel="noopener">Journal ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEWS ============ -->
   <section id="news">
-    <h2><a class="anchor" href="#news">📰 News</a></h2>
-    <ul class="news">
-      <li><span class="date">[2026-11]</span> 🎉 Personal homepage launched.</li>
-      <!-- Add newest news at the top -->
+    <div class="sec-head"><span class="sec-num">03</span><h2>News</h2></div>
+    <ul class="tl">
+      <li>
+        <span class="date">NOV 2026</span>
+        <p>Personal homepage is now online.</p>
+      </li>
     </ul>
   </section>
 
-  <!-- ===== Research Interests ===== -->
-  <section id="research">
-    <h2><a class="anchor" href="#research">🔬 Research Interests</a></h2>
-    <div class="interests">
-      <span class="chip">System-Security-Oriented Large AI Model Training</span>
-      <span class="chip">AI Security</span>
-      <span class="chip">LLM Agent Security</span>
-    </div>
-    <p style="margin-top:14px; color: var(--muted);">
-      I study how to train large AI models with security as a first-class system property,
-      covering the whole pipeline from training-data hygiene and alignment to the safety
-      of deployed LLM-based agents.
-    </p>
-  </section>
-
-  <!-- ===== Publications ===== -->
-  <section id="publications">
-    <h2><a class="anchor" href="#publications">📚 Publications</a></h2>
-    <p style="color: var(--muted); margin-bottom: 12px; font-size: 0.9rem;">
-      Chinese-language journal publications are listed with their original titles.
-    </p>
-
-    <div class="pub">
-      <div class="pub-body">
-        <div class="pub-title">软件测试策略和测试方法的应用</div>
-        <div class="pub-title-en">Application of Software Testing Strategies and Methods</div>
-        <div class="pub-venue">《电子技术与软件工程》 (Electronic Technology &amp; Software Engineering), 2019(18): 31-32</div>
-        <div class="pub-authors">
-          <span class="me">Yuexin Feng</span> (冯越鑫)
-        </div>
-        <div class="pub-links">
-          <a href="https://www.fabiao.com.cn/dzjsyrjgc/" target="_blank" rel="noopener">[Journal]</a>
-        </div>
+  <!-- ============ CONTACT ============ -->
+  <section id="contact">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Contact</h2></div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="k">Email</div>
+        <div class="v"><a href="mailto:caierayu@163.com">caierayu@163.com</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="k">GitHub</div>
+        <div class="v"><a href="https://github.com/caierayu" target="_blank" rel="noopener">github.com/caierayu</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="k">Open to</div>
+        <div class="v">Collaborations &amp; discussions</div>
       </div>
     </div>
-  </section>
-
-  <!-- ===== Academic Services ===== -->
-  <section id="services">
-    <h2><a class="anchor" href="#services">🤝 Academic Services</a></h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <h3>Reviewer</h3>
-        <ul>
-          <li>Conference A, 2026</li>
-          <li>Conference B, 2025</li>
-          <li>Journal C, 2025</li>
-        </ul>
-      </div>
-      <div class="service-card">
-        <h3>Sub-reviewer</h3>
-        <ul>
-          <li>Conference D, 2025</li>
-        </ul>
-      </div>
-      <div class="service-card">
-        <h3>Teaching / Volunteering</h3>
-        <ul>
-          <li>TA for Course X, 2025</li>
-          <li>Session chair, Workshop Y, 2026</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Contact ===== -->
-  <section id="contact" class="contact">
-    <h2><a class="anchor" href="#contact">📮 Contact</a></h2>
-    <p>📧 Email: <a href="mailto:caierayu@163.com">caierayu@163.com</a></p>
-    <p>🏢 Office: Northern Information Control Research Institute Group Co., Ltd., Nanjing, China</p>
-    <p>I am always open to discussions and collaborations — feel free to reach out!</p>
   </section>
 
 </main>
 
-<footer>
-  <div class="container">
-    &copy; 2026 Yuexin Feng &middot; Last updated: Nov 2026 &middot;
-    Template: feel free to fork and customize.
-  </div>
+<footer class="wrap">
+  <span>&copy; 2026 Yuexin Feng</span>
+  <span>Last updated · Nov 2026</span>
 </footer>
 
+<script>
+  (function(){
+    var root = document.documentElement;
+    var btn = document.getElementById('themeBtn');
+    var saved = localStorage.getItem('theme');
+    if (saved) { root.setAttribute('data-theme', saved); }
+    else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      root.setAttribute('data-theme', 'dark');
+    }
+    function sync(){ btn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+    sync();
+    btn.addEventListener('click', function(){
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      sync();
+    });
+  })();
+</script>
 </body>
 </html>
