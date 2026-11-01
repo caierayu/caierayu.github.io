@@ -76,30 +76,6 @@
       background: var(--card); border: 1px solid var(--border);
     }
 
-    /* Publications */
-    .pub { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--border); }
-    .pub:last-child { border-bottom: none; }
-    .pub-thumb {
-      flex: 0 0 130px; height: 90px; border-radius: 8px;
-      background: var(--card); border: 1px dashed var(--border);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted); font-size: 12px; text-align: center; padding: 6px;
-    }
-    .pub-body { flex: 1; }
-    .pub-title { font-weight: 600; font-size: 1.02rem; }
-    .pub-venue { color: var(--accent); font-weight: 600; font-size: 0.92rem; margin-top: 2px; }
-    .pub-authors { color: var(--muted); font-size: 0.92rem; margin-top: 2px; }
-    .pub-authors .me { color: var(--text); font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
-    .pub-links { margin-top: 8px; display: flex; gap: 14px; flex-wrap: wrap; }
-    .pub-links a { font-size: 0.88rem; color: var(--accent); text-decoration: none; }
-    .pub-links a:hover { text-decoration: underline; }
-    .tag {
-      display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 6px;
-      font-size: 0.72rem; font-weight: 700; vertical-align: 2px;
-    }
-    .tag-oral { background: #fef3c7; color: #92400e; }
-    .tag-spotlight { background: #dcfce7; color: #166534; }
-
     /* Services */
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
     .service-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
@@ -117,8 +93,6 @@
     @media (max-width: 640px) {
       .hero { padding-top: 32px; }
       .hero-photo { order: -1; }
-      .pub { flex-direction: column; }
-      .pub-thumb { width: 100%; flex-basis: auto; }
     }
   </style>
 </head>
@@ -129,7 +103,6 @@
     <a class="brand" href="#top">Yuexinfeng</a>
     <div class="links">
       <a href="#news">News</a>
-      <a href="#publications">Publications</a>
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
       <a href="assets/cv.pdf">CV</a>
@@ -175,8 +148,7 @@
     <h2><a class="anchor" href="#news">📰 News</a></h2>
     <ul class="news">
       <li><span class="date">[2026-11]</span> 🎉 Personal homepage launched.</li>
-      <li><span class="date">[2026-11]</span> Our paper "Paper Title #1" is accepted to <strong>Conference Name 2026</strong>!</li>
-      <!-- Add newest news at the top; delete the sample above -->
+      <!-- Add newest news at the top -->
     </ul>
   </section>
 
@@ -193,52 +165,6 @@
       covering the whole pipeline from training-data hygiene and alignment to the safety
       of deployed LLM-based agents.
     </p>
-  </section>
-
-  <!-- ===== Publications ===== -->
-  <section id="publications">
-    <h2><a class="anchor" href="#publications">📚 Publications</a></h2>
-    <p style="color: var(--muted); margin-bottom: 12px; font-size: 0.9rem;">
-      (* denotes equal contribution, † denotes corresponding author)
-    </p>
-
-    <!-- ====== COPY THIS BLOCK to add a new publication (newest first) ====== -->
-    <div class="pub">
-      <div class="pub-thumb">teaser.png<br>(optional figure)</div>
-      <div class="pub-body">
-        <div class="pub-title">Paper Title #1
-          <span class="tag tag-oral">Oral</span>
-        </div>
-        <div class="pub-venue">Conference Name 2026</div>
-        <div class="pub-authors">
-          <span class="me">Yuexinfeng</span>, Coauthor One, Coauthor Two, Coauthor Three
-        </div>
-        <div class="pub-links">
-          <a href="https://arxiv.org/" target="_blank" rel="noopener">[arXiv]</a>
-          <a href="https://openaccess.thecvf.com/" target="_blank" rel="noopener">[Paper]</a>
-          <a href="https://github.com/" target="_blank" rel="noopener">[Code]</a>
-          <a href="https://project-page.example.com" target="_blank" rel="noopener">[Project Page]</a>
-          <a href="#" onclick="alert('Add BibTeX here');return false;">[BibTeX]</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="pub-thumb">teaser.png</div>
-      <div class="pub-body">
-        <div class="pub-title">Paper Title #2
-          <span class="tag tag-spotlight">Spotlight</span>
-        </div>
-        <div class="pub-venue">Journal Name, 2025</div>
-        <div class="pub-authors">
-          Coauthor One, <span class="me">Yuexinfeng</span>*, Coauthor Two
-        </div>
-        <div class="pub-links">
-          <a href="https://doi.org/" target="_blank" rel="noopener">[DOI]</a>
-          <a href="https://arxiv.org/" target="_blank" rel="noopener">[arXiv]</a>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- ===== Academic Services ===== -->
