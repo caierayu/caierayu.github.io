@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name</title>
+  <meta name="description" content="Personal homepage of Your Name — research interests, publications, and contact.">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1f2430;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+      --border: #e5e7eb;
+      --card: #f9fafb;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    nav .brand { font-weight: 700; text-decoration: none; color: var(--text); }
+    nav .links a {
+      color: var(--muted); text-decoration: none; margin-left: 20px; font-size: 15px;
+    }
+    nav .links a:hover { color: var(--accent); }
+
+    /* Hero */
+    .hero { display: flex; gap: 40px; padding: 56px 0 40px; align-items: flex-start; flex-wrap: wrap; }
+    .hero-text { flex: 1 1 480px; }
+    .hero h1 { font-size: 2.2rem; margin-bottom: 4px; }
+    .hero .pronouns { color: var(--muted); font-size: 1rem; }
+    .hero p.affiliation { margin-top: 14px; font-size: 1.05rem; }
+    .hero p.bio { margin-top: 14px; color: var(--text); max-width: 60ch; }
+    .hero .social { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px; border-radius: 999px; font-size: 14px;
+      background: var(--accent-light); color: var(--accent); text-decoration: none;
+      border: 1px solid #dbeafe;
+    }
+    .badge:hover { background: #dbeafe; }
+    .hero-photo { flex: 0 0 220px; }
+    .hero-photo img {
+      width: 220px; height: 220px; object-fit: cover;
+      border-radius: 16px; border: 1px solid var(--border); background: var(--card);
+    }
+
+    /* Sections */
+    section { padding: 36px 0; border-top: 1px solid var(--border); }
+    section h2 { font-size: 1.4rem; margin-bottom: 20px; }
+    section h2 .anchor { color: var(--accent); text-decoration: none; }
+
+    /* News */
+    .news li { margin: 8px 0 8px 1.2em; }
+    .news .date { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+    /* Research interests */
+    .interests { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip {
+      padding: 6px 14px; border-radius: 999px; font-size: 14px;
+      background: var(--card); border: 1px solid var(--border);
+    }
+
+    /* Publications */
+    .pub { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .pub:last-child { border-bottom: none; }
+    .pub-thumb {
+      flex: 0 0 130px; height: 90px; border-radius: 8px;
+      background: var(--card); border: 1px dashed var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 12px; text-align: center; padding: 6px;
+    }
+    .pub-body { flex: 1; }
+    .pub-title { font-weight: 600; font-size: 1.02rem; }
+    .pub-venue { color: var(--accent); font-weight: 600; font-size: 0.92rem; margin-top: 2px; }
+    .pub-authors { color: var(--muted); font-size: 0.92rem; margin-top: 2px; }
+    .pub-authors .me { color: var(--text); font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+    .pub-links { margin-top: 8px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .pub-links a { font-size: 0.88rem; color: var(--accent); text-decoration: none; }
+    .pub-links a:hover { text-decoration: underline; }
+    .tag {
+      display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 6px;
+      font-size: 0.72rem; font-weight: 700; vertical-align: 2px;
+    }
+    .tag-oral { background: #fef3c7; color: #92400e; }
+    .tag-spotlight { background: #dcfce7; color: #166534; }
+
+    /* Services */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .service-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+    .service-card h3 { font-size: 0.95rem; margin-bottom: 8px; }
+    .service-card p, .service-card li { font-size: 0.9rem; color: var(--muted); }
+    .service-card ul { margin-left: 1.2em; }
+
+    /* Contact */
+    .contact p { margin: 6px 0; }
+    .contact a { color: var(--accent); text-decoration: none; }
+    .contact a:hover { text-decoration: underline; }
+
+    footer { border-top: 1px solid var(--border); padding: 24px 0 48px; color: var(--muted); font-size: 0.85rem; }
+
+    @media (max-width: 640px) {
+      .hero { padding-top: 32px; }
+      .hero-photo { order: -1; }
+      .pub { flex-direction: column; }
+      .pub-thumb { width: 100%; flex-basis: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a class="brand" href="#top">Your Name</a>
+    <div class="links">
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <a href="assets/cv.pdf">CV</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container" id="top">
+
+  <!-- ===== Hero ===== -->
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Your Name</h1>
+      <span class="pronouns">he/him &middot; she/her &middot; (edit as needed)</span>
+      <p class="affiliation">
+        PhD Student / Researcher &middot; <strong>Department of XXX, University of XXX</strong><br>
+        (edit: your position and affiliation)
+      </p>
+      <p class="bio">
+        Write a 2–4 sentence bio here: who you are, what problems you care about,
+        and your broader research goal. E.g. "My research focuses on ... with the goal of ...".
+      </p>
+      <p class="bio">
+        <strong>Email:</strong> yourname [at] university [dot] edu
+        &middot; <a href="mailto:caierayu@163.com">caierayu@163.com</a>
+      </p>
+      <div class="social">
+        <a class="badge" href="https://scholar.google.com/" target="_blank" rel="noopener">🎓 Google Scholar</a>
+        <a class="badge" href="https://github.com/caierayu" target="_blank" rel="noopener">🐙 GitHub</a>
+        <a class="badge" href="https://www.linkedin.com/" target="_blank" rel="noopener">💼 LinkedIn</a>
+        <a class="badge" href="https://twitter.com/" target="_blank" rel="noopener">𝕏 Twitter</a>
+        <a class="badge" href="https://orcid.org/" target="_blank" rel="noopener">🆔 ORCID</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <!-- Replace with your photo: put photo.jpg in the repo root or assets folder -->
+      <img src="assets/photo.jpg" alt="Photo of Your Name"
+           onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'220\' height=\'220\'><rect width=\'100%\' height=\'100%\' fill=\'#f3f4f6\'/><text x=\'50%\' y=\'50%\' fill=\'#9ca3af\' font-family=\'sans-serif\' font-size=\'14\' text-anchor=\'middle\' dominant-baseline=\'middle\'>Photo</text></svg>')">
+    </div>
+  </div>
+
+  <!-- ===== News ===== -->
+  <section id="news">
+    <h2><a class="anchor" href="#news">📰 News</a></h2>
+    <ul class="news">
+      <li><span class="date">[2026-11]</span> 🎉 Our paper "Paper Title #1" is accepted to <strong>Conference Name 2026</strong>!</li>
+      <li><span class="date">[2026-09]</span> Started my PhD at University of XXX.</li>
+      <!-- Add newest news at the top -->
+    </ul>
+  </section>
+
+  <!-- ===== Research Interests ===== -->
+  <section id="research">
+    <h2><a class="anchor" href="#research">🔬 Research Interests</a></h2>
+    <div class="interests">
+      <span class="chip">Research Area 1</span>
+      <span class="chip">Research Area 2</span>
+      <span class="chip">Research Area 3</span>
+      <span class="chip">Research Area 4</span>
+    </div>
+    <p style="margin-top:14px; color: var(--muted);">
+      Optionally add a short paragraph describing your research vision here.
+    </p>
+  </section>
+
+  <!-- ===== Publications ===== -->
+  <section id="publications">
+    <h2><a class="anchor" href="#publications">📚 Publications</a></h2>
+    <p style="color: var(--muted); margin-bottom: 12px; font-size: 0.9rem;">
+      (* denotes equal contribution, † denotes corresponding author)
+    </p>
+
+    <!-- ====== COPY THIS BLOCK to add a new publication (newest first) ====== -->
+    <div class="pub">
+      <div class="pub-thumb">teaser.png<br>(optional figure)</div>
+      <div class="pub-body">
+        <div class="pub-title">Paper Title #1
+          <span class="tag tag-oral">Oral</span>
+        </div>
+        <div class="pub-venue">Conference Name 2026</div>
+        <div class="pub-authors">
+          <span class="me">Your Name</span>, Coauthor One, Coauthor Two, Coauthor Three
+        </div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/" target="_blank" rel="noopener">[arXiv]</a>
+          <a href="https://openaccess.thecvf.com/" target="_blank" rel="noopener">[Paper]</a>
+          <a href="https://github.com/" target="_blank" rel="noopener">[Code]</a>
+          <a href="https://project-page.example.com" target="_blank" rel="noopener">[Project Page]</a>
+          <a href="#" onclick="alert('Add BibTeX here');return false;">[BibTeX]</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-thumb">teaser.png</div>
+      <div class="pub-body">
+        <div class="pub-title">Paper Title #2
+          <span class="tag tag-spotlight">Spotlight</span>
+        </div>
+        <div class="pub-venue">Journal Name, 2025</div>
+        <div class="pub-authors">
+          Coauthor One, <span class="me">Your Name</span>*, Coauthor Two
+        </div>
+        <div class="pub-links">
+          <a href="https://doi.org/" target="_blank" rel="noopener">[DOI]</a>
+          <a href="https://arxiv.org/" target="_blank" rel="noopener">[arXiv]</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Academic Services ===== -->
+  <section id="services">
+    <h2><a class="anchor" href="#services">🤝 Academic Services</a></h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Reviewer</h3>
+        <ul>
+          <li>Conference A, 2026</li>
+          <li>Conference B, 2025</li>
+          <li>Journal C, 2025</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <h3>Sub-reviewer</h3>
+        <ul>
+          <li>Conference D, 2025</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <h3>Teaching / Volunteering</h3>
+        <ul>
+          <li>TA for Course X, 2025</li>
+          <li>Session chair, Workshop Y, 2026</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact" class="contact">
+    <h2><a class="anchor" href="#contact">📮 Contact</a></h2>
+    <p>📧 Email: <a href="mailto:caierayu@163.com">caierayu@163.com</a>
+       &nbsp;(academic email: yourname@university.edu — replace it)</p>
+    <p>🏢 Office: Room XXX, Building XXX, University of XXX, City, Country</p>
+    <p>I am always open to discussions and collaborations — feel free to reach out!</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    &copy; 2026 Your Name &middot; Last updated: Nov 2026 &middot;
+    Template: feel free to fork and customize.
+  </div>
+</footer>
+
+</body>
+</html>
