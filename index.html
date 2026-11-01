@@ -156,6 +156,14 @@
   .contact-item .v{margin-top:6px;font-size:.98rem;font-weight:600;word-break:break-all}
   .contact-item .v a{color:var(--accent)}
 
+  /* contact link pills */
+  .link-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .link-pill{display:inline-flex;align-items:center;gap:7px;font-size:.86rem;font-weight:600;
+    padding:8px 15px;border-radius:999px;border:1px solid var(--line);background:var(--surface);
+    color:var(--text-soft);box-shadow:var(--shadow);transition:.22s}
+  .link-pill:hover{transform:translateY(-2px);color:var(--accent);
+    border-color:color-mix(in srgb,var(--accent) 38%,var(--line));box-shadow:var(--shadow-lg)}
+
   footer{padding:34px 0 54px;color:var(--muted);font-size:.86rem;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 
   @media (max-width:680px){
@@ -290,6 +298,13 @@
         <div class="k">Open to</div>
         <div class="v">Collaborations &amp; discussions</div>
       </div>
+    </div>
+    <div class="link-list">
+      <a class="link-pill" href="#">🎓 Google Scholar</a>
+      <a class="link-pill" href="#">💼 LinkedIn</a>
+      <a class="link-pill" href="#">🆔 ORCID</a>
+      <a class="link-pill" href="#">𝕏 Twitter / X</a>
+      <a class="link-pill" href="#">📄 CV (PDF)</a>
     </div>
   </section>
 
